@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <form action="instagram/register" method="POST" enctype="multipart/form-data">
+    <form action="register" method="POST" enctype="multipart/form-data">
         <input type="text" name="username">
         <input type="text" name="password">
         <input type="file" name="profile">

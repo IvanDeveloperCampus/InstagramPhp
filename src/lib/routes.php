@@ -1,7 +1,10 @@
 <?php
 
+
 use Skylab170\InstagramPhp\controllers\Login;
 use Skylab170\InstagramPhp\controllers\Signup;
+use Skylab170\InstagramPhp\controllers\Home;
+
 use Skylab170\InstagramPhp\lib\Database;
 
 $router=new \Bramus\Router\Router();//permite utilizar las funcionalidades de enrutamiento proporcionadas 
@@ -44,14 +47,18 @@ $router->get('/signup', function(){
 
 });
 $router->post('/register', function(){
-    $controller=new Signup;
+   $controller=new Signup;
     $controller->register();
 });
 $router->get('/home', function(){
-    echo "Home";
+    $user=unserialize($_SESSION['user']);
+    $controller=new Home($user);
+    $controller->index();
 });
 $router->post('/publish', function(){
-    echo "Mi segunda ruta";
+    $user=unserialize($_SESSION['user']);
+    $controller=new Home($user);
+    $controller->store();
 });
 $router->get('/profile', function(){
     echo "Mi segunda ruta";
