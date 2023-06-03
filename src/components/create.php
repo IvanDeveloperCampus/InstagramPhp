@@ -1,5 +1,5 @@
 <div class="create">
-    <form action="/instagram/publish" method="POST" enctype="multipart/form-data">
+    <form action="publish" method="POST" enctype="multipart/form-data">
         <textarea name="title" rows="3"></textarea>
         <div>
             <input type="file"  name="image" accept="image/png">
