@@ -69,6 +69,10 @@ class Post extends Model{
         $this->user=$user;
     }
 
+    public function getUser(){
+        return $this->user;
+    }
+
 
     
         
