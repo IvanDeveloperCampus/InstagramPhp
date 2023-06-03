@@ -39,6 +39,23 @@ class POstImage extends Post{
         }
     }
 
+    public static function get($post_id){
+        try {
+            $db=new Database();
+            $query=$db->connect()->prepare('SELECT * FROM posts WHERE post_id=:post_id');
+            $query->execute(['post_id'=>$post_id]);
+            $data=$query->fetch(PDO::FETCH_ASSOC);
+
+            $post=new POstImage($data['title'], $data['media']);
+            $post->setId($data['post_id']);
+            error_log($post->getTitle());
+            return $post;
+
+        } catch (PDOException $th) {
+            return NULL;
+        }
+    }
+
     
 
 

@@ -4,6 +4,7 @@
 use Skylab170\InstagramPhp\controllers\Login;
 use Skylab170\InstagramPhp\controllers\Signup;
 use Skylab170\InstagramPhp\controllers\Home;
+use Skylab170\InstagramPhp\controllers\Actions;
 
 use Skylab170\InstagramPhp\lib\Database;
 
@@ -64,7 +65,9 @@ $router->get('/profile', function(){
     echo "Mi segunda ruta";
 });
 $router->post('/addLike', function(){
-    echo "Mi segunda ruta";
+    $user=unserialize($_SESSION['user']);
+    $controller=new Actions($user);
+    $controller->like();
 });
 $router->get('/signout', function(){
     echo "Mi segunda ruta";

@@ -59,7 +59,8 @@ class Post extends Model{
         }
     }
 
-    protected function addLike(User $user){
+    public function addLike(User $user){
+        //TODO: revisar primero si ya le dio like, si es asi quitarlo 
         $like=new Like($this->id, $user->getId());///id del post y id del suser
         $like->save();
         array_push($this->likes, $like);

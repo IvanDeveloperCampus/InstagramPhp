@@ -17,15 +17,19 @@ class Like extends Model{
     }
 
     public function save(){
+        
         try {
-            $query=$this->prepare('INSERT INTO likes (post_id, user_id) VALUES (:post_id,:user_id');
+            
+            $query = $this->prepare('INSERT INTO likes (post_id, user_id) VALUES(:post_id, :user_id)');
             $query->execute([
                 'post_id'=>$this->post_id,
                 'user_id'=>$this->user_id
             ]);
+
             return true;
         } catch (PDOException $th) {
-            return false;
+            
+            echo $th->getMessage();
         }
     }
 
