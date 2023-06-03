@@ -15,7 +15,9 @@ class Home extends Controller{
     }
 
     public function index(){
-        $this->render('home/index', ['user'=> $this->user]);
+        $posts=PostImage::getFeed();
+        $this->render('home/index', ['user'=> $this->user, 'posts'=>$posts]);
+
     }
 
     public function store(){
