@@ -15,22 +15,20 @@ class UtilImages{
         $uploadOk = 1; //BANDERA
         $check = getimagesize($photo["tmp_name"]);//PARA OBTENER INFORMACION EN EL ARCHIVO TEMPORAL
 
-        //CONDICION PARA VERIFICAR QUE EXISTE UNA IMAGEN
-        if($check !== false) {
-            $uploadOk = 1;
-        } else {
-            $uploadOk = 0;
-        }
-
-        if ($uploadOk == 0) {
+        if (!self::isImage($photo)) {
             return "";
-        } else {
-            if (move_uploaded_file($photo["tmp_name"], $target_file)) {//MUEVE LA IMGANE DESDE ARCHIVOS TEMPORALES A LA NUEVA RUTA
-                return $hash; //RETORNA EL HASH QUE SE GUARDA EN LA BD
-            } else {
-                return '';
-            }
         }
+        
+        if (move_uploaded_file($photo["tmp_name"], $target_file)) {
+            return $hash;
+        }
+        
+        return '';
+    }
+
+    private static function isImage($photo): bool {
+        $check = getimagesize($photo["tmp_name"]);
+        return ($check !== false);
     }
 
 }
