@@ -13,7 +13,7 @@ class UtilImages{
         $hash = md5(Date('Ymdgi') . $filename) . '.' . $ext;
         $target_file = $target_dir . $hash;
         $uploadOk = 1;
-        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+        //$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
         
         $check = getimagesize($photo["tmp_name"]);
         if($check !== false) {
@@ -25,6 +25,7 @@ class UtilImages{
         }
 
         if ($uploadOk == 0) {
+            return "";
             //echo "Sorry, your file was not uploaded.";
             //$this->redirect('user', ['error' => Errors::ERROR_USER_UPDATEPHOTO_FORMAT]);
         // if everything is ok, try to upload file

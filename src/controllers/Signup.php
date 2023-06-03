@@ -27,11 +27,6 @@ class Signup extends Controller{
         $password = $this->post('password');
         $profile = $this->file('profile');
 
-        $pictureName=UtilImages::storeImage($profile);
-
-        var_dump($pictureName);
-            
-        /*
         if (
             !is_null($username) &&
             !is_null($password) && !is_null($profile)
@@ -41,11 +36,11 @@ class Signup extends Controller{
             $user=new User($username, $password);
             $user->setProfile($pictureName);
             $user->save();
-            header('location: /SkylAb-170/InstagramPhp/login');
+            header('location: /InstagramPhp/login');
 
         }else{
             $this->render('errors/index');
-        }*/
+        }
     }
 }
 
