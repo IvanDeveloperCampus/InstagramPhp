@@ -29,6 +29,19 @@ class User extends Model{
         return $this->profile;
     }
 
+    public function publish(PostImage $post){
+        try {
+            //guardamos el post
+            $query=$this->prepare('INSERT INTO posts (user_id, title, media) VALUES (:user_id, :title, :media)');
+            $query->execute([
+                'user_id'=>$this->id,
+                'title'=>$post->getTitle(),
+                'media'=>$post->getImage()
+            ]);
+        } catch (PDOException $th) {
+            echo $th->getMessage();
+        }
+    }
 
     public function save(){
         
