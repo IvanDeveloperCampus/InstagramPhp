@@ -19,16 +19,18 @@ class Home extends Controller{
     }
 
     public function store(){
+        //recoje los datos de titulo y post que vienen de la vista
         $title=$this->post('title');
         $image=$this->file('image');
 
+        
         if (!is_null($title) && !is_null($image)) {
             $fileName=UtilImages::storeImage($image);
-
-            $post=new PostImage($title, $fileName);
-            $this->user->publish($post);
+            $post=new PostImage($title, $fileName);//creamos un nuevo post de tipo Imagen
+            $this->user->publish($post);//y con el usuario actual llamamos a publicar con la informacion del post
+            header('location: /instagramPhp/home');
         }else{
-            header('location: /instagram/home');
+            header('location: /instagramPhp/home');
         }
     }
 }
