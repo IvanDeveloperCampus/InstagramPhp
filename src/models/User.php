@@ -93,8 +93,28 @@ class User extends Model{
         }
     }
 
-    //traer usuario por username
-    public static function get ($username){
+    //traer usuario por Id
+    public static function getById ($id){
+        try{
+            $db=new Database();
+            $query=$db->connect()->prepare('SELECT * FROM users WHERE user_id=:user_id');
+            //se ejecuta la query y le pasamos el parametro
+            $query->execute(['user_id'=>$id]);
+            //guardar la informacion en una variable
+            $data=$query->fetch(PDO::FETCH_ASSOC);
+            $user=new User($data['username'], $data['password']);
+            $user->setId($data['user_id']);
+            $user->setProfile($data['profile']);
+            return $user;
+
+        }catch(PDOException $e){
+            error_log($e->getMessage());
+            return NULL;
+        }
+    }
+
+     //traer usuario por username
+     public static function get ($username){
         try{
             $db=new Database();
             $query=$db->connect()->prepare('SELECT * FROM users WHERE username=:username');
