@@ -133,6 +133,10 @@ class User extends Model{
         }
     }
 
+    public function fetchPosts(){
+        $this->posts=POstImage::getAll($this->id);
+    }
+
     public function getId():string{
         return $this->id;
     }
