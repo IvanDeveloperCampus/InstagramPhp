@@ -5,7 +5,7 @@ use Skylab170\InstagramPhp\controllers\Login;
 use Skylab170\InstagramPhp\controllers\Signup;
 use Skylab170\InstagramPhp\controllers\Home;
 use Skylab170\InstagramPhp\controllers\Actions;
-
+use Skylab170\InstagramPhp\controllers\Profile;
 use Skylab170\InstagramPhp\lib\Database;
 
 $router=new \Bramus\Router\Router();//permite utilizar las funcionalidades de enrutamiento proporcionadas 
@@ -62,7 +62,9 @@ $router->post('/publish', function(){
     $controller->store();
 });
 $router->get('/profile', function(){
-    echo "Mi segunda ruta";
+    $user=unserialize($_SESSION['user']);
+    $controller=new Profile();
+    $controller->getUserProfile($user);
 });
 $router->post('/addLike', function(){
     $user=unserialize($_SESSION['user']);
@@ -70,11 +72,15 @@ $router->post('/addLike', function(){
     $controller->like();
 });
 $router->get('/signout', function(){
-    echo "Mi segunda ruta";
+    unset($_SESSION['user']);
+    header('location: /InstagramPhp/login');
 });
 $router->get('/profile/{username}', function($username){
-    echo "Mi segunda ruta";
+    $controller=new Profile();
+    $controller->getUsernameProfile($username);
 });
+
+
 
 $router->run();//activar el enrutador
 
