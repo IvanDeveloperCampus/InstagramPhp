@@ -13,7 +13,7 @@
 
 
 <div class="container w-25">
-        <h2>Profile</h2>
+        <h2>Profile <?php echo $this->data['user']->getUsername(); ?></h2>
         <?php
             $user = $this->data['user'];
 
