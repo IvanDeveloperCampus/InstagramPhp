@@ -56,6 +56,30 @@ class POstImage extends Post{
         }
     }
 
+    public static function getAll($user_id){
+        $items=[];
+        try {
+            $db=new Database();
+            $query=$db->connect()->prepare('SELECT * FROM posts WHERE user_id=:user_id');
+            $query->execute([
+                'user_id'=>$user_id
+            ]);
+            while ($p=$query->fetch(PDO::FETCH_ASSOC)) {
+                $item=new POstImage($p['title'], $p['media']);//se crea un nuevo objeto imagen
+                $item->setId($p['post_id']);//se le asigna el id del post
+                $item->fetchLikes();//para traer los likes de cada post
+                $user=User::getById($p['user_id']);//se trae el usuario del post
+                $item->setUser($user);//se el asigna al post
+                array_push($items, $item);
+            }
+            
+            return $items;
+
+        } catch (PDOException $th) {
+            echo $th;
+        }
+    }
+
     
 
 
