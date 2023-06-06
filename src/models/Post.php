@@ -14,11 +14,13 @@ class Post extends Model{
     private int $id;
     private array $likes;
     private User $user;
+    private array $comments;
 
 
     protected function __construct(private string $title){
         parent::__construct();
         $this->likes=[];
+        $this->comments=[];
     }
 
     public function setId(string $id){
@@ -35,6 +37,12 @@ class Post extends Model{
     public function getLikes(){
         return count($this->likes);
     }
+
+    public function getComments(){
+        return $this->comments;
+    }
+
+    
 
     public function publish($user_id){
 
@@ -59,11 +67,47 @@ class Post extends Model{
         }
     }
 
+    public  function fetchComments(){
+        $arrayComments=[];//se iniciliza el array para almecenar los objetos comments
+        try{
+            $db=new Database();
+            $query=$db->connect()->prepare("SELECT * FROM comments WHERE post_id=:post_id");//consulta de los comentarios segun el id del post
+            $query->execute(['post_id'=>$this->id]);
+
+            while($p=$query->fetch(PDO::FETCH_ASSOC)){
+                $item =new Comment($p['post_id'],$p['user_id'], $p['comment'] );//se crea un nuevo comentario con el id del post actual y el id del user
+                $item->setId($p['id']);//se establece como id del objeto comentario
+                array_push($arrayComments, $item);//se agrega cada objeto comentario al array
+            }
+           $this->comments=$arrayComments;
+        }catch(PDOException $e){
+            echo $e;
+        }
+    }
+
+    public function traerUsuarioComentario(){
+        try{
+            $db=new Database();
+            $query=$db->connect()->prepare("SELECT username FROM users INNER JOIN comments ON users.user_id=comments.user_id INNER JOIN posts ON posts.post_id=comments.post_id WHERE posts.post_id=:post_id");//consulta de los comentarios segun el id del post
+            $query->execute(['post_id'=>$this->id]);
+            $resultados = $query->fetchAll(PDO::FETCH_COLUMN);
+            return $resultados;
+        }catch(PDOException $e){
+            echo $e;
+        }
+    }
+
+
     public function addLike(User $user){
-        //TODO: revisar primero si ya le dio like, si es asi quitarlo 
         $like=new Like($this->id, $user->getId());///id del post y id del suser
         $like->existsLike();
         array_push($this->likes, $like);
+    }
+    public function addComment(User $user, string $comment){
+        $comment=new Comment($this->id, $user->getId(), $comment);///id del post y id del suser
+        $comment->save();
+        //$like->existsLike();
+        array_push($this->comments, $comment);
     }
 
     public function setUser(User $user){

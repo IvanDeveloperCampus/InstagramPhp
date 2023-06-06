@@ -63,7 +63,7 @@
                         <form action="addLike" method="POST">
                             <input type="hidden" name="post_id" value="<?php echo $p->getId() ?>">
                             <input type="hidden" name="origin" value="home">
-                            <button type="submit" class="icon-button"><img src="src/assets/img/like.PNG" class="icon" alt=""></button>
+                            <button type="submit" class="icon-button"><img src="src/assets/img/like.PNG"  id="icon-Like" class="icon" alt=""></button>
                             <img src="src/assets/img/comment.PNG" class="icon" alt="">
                             <img src="src/assets/img/send.PNG" class="icon" alt="">
                             <img src="src/assets/img/save.PNG" class="save icon" alt="">
@@ -71,12 +71,24 @@
                     </div>
                     <p class="likes"><?php echo $p->getLikes(); ?></p>
                     <p class="description"><span><?php echo $p->getUser()->getUsername() ?></span><?php echo $p->getTitle() ?></p>
+                    <a class="username" href="/instagramPhp/<?php echo $p->getUser()->getUsername() ?> style:"text"">
+                       
+                        <?php foreach($p->getComments() as $c) {?>
+                            <?php echo $p->getUser()->getUsername() ?>
+                            <span class="comments"><?php echo $c->comment ?></span><br>
+                        <?php } ?>
+                    </a>
                     <p class="post-time">03/06/2023</p>
                 </div>
+                
                 <div class="comment-wrapper">
-                    <img src="src/assets/img/smile.PNG" class="icon" alt="">
-                    <input type="text" class="comment-box" placeholder="Add a comment">
-                    <button class="comment-btn">Post</button>
+                    <form action="addComment" method="POST">
+                        <img src="src/assets/img/smile.PNG" class="icon" alt="">              
+                        <input type="hidden" name="post_id" value="<?php echo $p->getId() ?>">
+                        <input type="hidden" name="origin" value="home">
+                        <input type="text" class="comment-box"  name="comment" placeholder="Add a comment">
+                        <button type="submit" class="comment-btn">Post</button>
+                    </form>
                 </div>
             </div>
 

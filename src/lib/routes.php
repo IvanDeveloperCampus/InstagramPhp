@@ -88,6 +88,13 @@ $router->post('/addLike', function(){
     $controller=new Actions($user);
     $controller->like();
 });
+
+$router->post('/addComment', function(){
+    notAuth();
+    $user=unserialize($_SESSION['user']);
+    $controller=new Actions($user);
+    $controller->comment();
+});
 $router->get('/signout', function(){
     notAuth();
     unset($_SESSION['user']);
