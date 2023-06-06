@@ -8,7 +8,7 @@
                 <img data-bs-toggle="modal" data-bs-target="#post-add-modal" src="src/assets/img/add.PNG" class="icon" alt="">
                 <img src="src/assets/img/explore.PNG" class="icon" alt="">
                 <img src="src/assets/img/like.PNG" class="icon" alt="">
-                <a class="link-dark" href="/instagramPhp/profile">
+                <a class="link-dark" href="/instagramPhp/<?php echo $user->getUsername() ?>">
                     <img class="rounded-circle" src="public/img/photos/<?php echo $user->getProfile() ?>" width="22" />
                 </a>
 
