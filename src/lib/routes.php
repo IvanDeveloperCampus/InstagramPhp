@@ -81,12 +81,7 @@ $router->post('/publish', function(){
     $controller=new Home($user);
     $controller->store();
 });
-$router->get('/profile', function(){
-    notAuth();
-    $user=unserialize($_SESSION['user']);
-    $controller=new Profile();
-    $controller->getUserProfile($user);
-});
+
 $router->post('/addLike', function(){
     notAuth();
     $user=unserialize($_SESSION['user']);
@@ -98,7 +93,7 @@ $router->get('/signout', function(){
     unset($_SESSION['user']);
     header('location: /InstagramPhp/login');
 });
-$router->get('/profile/{username}', function($username){
+$router->get('/{username}', function($username){
     notAuth();
     $controller=new Profile();
     $controller->getUsernameProfile($username);

@@ -52,7 +52,7 @@
                         <div class="profile-pic">
                             <img src="public/img/photos/<?php echo $p->getUser()->getProfile() ?>" alt="imgPerfil" width="50%">
                         </div>
-                        <a class="username" href="/instagramPhp/profile/<?php echo $p->getUser()->getUsername() ?>">
+                        <a class="username" href="/instagramPhp/<?php echo $p->getUser()->getUsername() ?>">
                             <?php echo $p->getUser()->getUsername() ?>
                         </a>
                     </div>
