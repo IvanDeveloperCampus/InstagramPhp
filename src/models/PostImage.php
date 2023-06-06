@@ -27,6 +27,7 @@ class POstImage extends Post{
                 $item=new POstImage($p['title'], $p['media']);//se crea un nuevo objeto imagen
                 $item->setId($p['post_id']);//se le asigna el id del post
                 $item->fetchLikes();//para traer los likes de cada post
+                $item->fetchComments();//traer comentarios
                 $user=User::getById($p['user_id']);//se trae el usuario del post
                 $item->setUser($user);//se el asigna al post
                 array_push($items, $item);
