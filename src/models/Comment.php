@@ -10,6 +10,8 @@ class Comment extends Model{
 
 
     private int $id;
+    public string $usernameComment;
+    
 
     public function __construct(private int $post_id, private int $user_id, public string  $comment)
     {
@@ -33,6 +35,10 @@ class Comment extends Model{
 
             echo $th->getMessage();
         }
+    }
+
+    public function setUsernameComment($value){
+        $this->usernameComment=$value;
     }
 
     public function setId($value)
