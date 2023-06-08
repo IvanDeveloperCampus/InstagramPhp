@@ -37,6 +37,36 @@ header{
 .contenedor-cabezera{
     margin-left: 100px;
 }
+.cabezera1{
+    width: 400px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    justify-content: space-between;
+}
+.cabezera1 h1{
+    color: #616161;
+    font-weight: 100;
+    font-size: 26px;
+}
+.cabezera1 .sendMessage{
+    width: 150px;
+    height: 30px;
+    border: solid #dbdbdb 1px;
+    cursor: pointer;
+}
+.cabezera1 svg{
+    cursor: pointer;
+}
+.cabezera2{
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+.cabezera2 .seguidores, .cabezera2 .seguidos{
+    margin-left: 1rem;
+}
 
 .linea{
     width: 100%;
@@ -72,4 +102,9 @@ main{
 .mainCont__grid div > img{
     width: 100%;
     cursor: pointer;
+}
+
+
+.cabezera2{
+    display: flex;
 }
