@@ -27,6 +27,7 @@ class Signup extends Controller{
         $password = $this->post('password');
         $profile = $this->file('profile');
 
+        
         if (
             !is_null($username) &&
             !is_null($password) && !is_null($profile)

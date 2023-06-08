@@ -15,7 +15,7 @@
             <div class="header">
                 <img src="src/assets/img/logo.PNG" alt="instagramLogo" class="instaLogo" />
             </div>
-            <form action="register" method="POST">
+            <form action="register" method="POST" enctype="multipart/form-data">
                 <div class="inputElement">
                     
                         <input type="text" placeholder="Username" name="username" class="inputText" />
