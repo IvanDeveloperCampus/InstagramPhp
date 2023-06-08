@@ -49,6 +49,8 @@ class Post extends Model{
 
     }
 
+    //SE USAN EN POSTIMAGE Y SE LLAMAN EN GETFEED para enviarlos al home
+    
     public  function fetchLikes(){
         $items=[];//se iniciliza el array para almecenar los objetos likes
         try{
@@ -102,13 +104,13 @@ class Post extends Model{
     public function addLike(User $user){
         $like=new Like($this->id, $user->getId());///id del post y id del suser
         $like->existsLike();
-        array_push($this->likes, $like);
+        //array_push($this->likes, $like);
     }
     public function addComment(User $user, string $comment){
         $comment=new Comment($this->id, $user->getId(), $comment);///id del post y id del suser
         $comment->save();
         //$like->existsLike();
-        array_push($this->comments, $comment);
+       // array_push($this->comments, $comment);
     }
 
     public function setUser(User $user){

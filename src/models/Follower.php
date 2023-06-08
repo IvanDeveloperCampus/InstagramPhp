@@ -54,6 +54,7 @@ class Follower extends model{
         }
     }
 
+    //SE TRAE LOS USERNAME Y AGREGAN EN USER
     public static function getFollowed($user_id){
         try {
             $db=new Database();
