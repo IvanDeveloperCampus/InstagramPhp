@@ -36,7 +36,7 @@
                     </form>
                 </div>
                 <div class="cabezera2">
-                    <p><b>0</b> publicaciones</p>                
+                    <p><b><?php echo $user->countGetPosts() ?></b> publicaciones</p>                
                     <p class="seguidores"><b><?php echo $user->countGetFollowers() ?></b> seguidores</p>
                     <p class="seguidos"><b><?php echo $user->countGetFollowed() ?></b> seguidos</p>
                 </div>

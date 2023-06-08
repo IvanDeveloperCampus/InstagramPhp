@@ -33,6 +33,10 @@ class User extends Model{
         return $this->profile;
     }
 
+    public function countGetPosts(){
+        return count($this->posts);
+    }
+
     public function countGetFollowers(){
         return count($this->followers);
     }
