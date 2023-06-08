@@ -71,12 +71,13 @@ class Post extends Model{
         $arrayComments=[];//se iniciliza el array para almecenar los objetos comments
         try{
             $db=new Database();
-            $query=$db->connect()->prepare("SELECT * FROM comments WHERE post_id=:post_id");//consulta de los comentarios segun el id del post
+            $query=$db->connect()->prepare("SELECT comments.*, users.username FROM comments INNER JOIN users ON comments.user_id=users.user_id INNER JOIN posts ON comments.post_id=posts.post_id WHERE posts.post_id=:post_id;");//consulta de los comentarios segun el id del post
             $query->execute(['post_id'=>$this->id]);
 
             while($p=$query->fetch(PDO::FETCH_ASSOC)){
-                $item =new Comment($p['post_id'],$p['user_id'], $p['comment'] );//se crea un nuevo comentario con el id del post actual y el id del user
+                $item =new Comment($p['post_id'],$p['user_id'], $p['comment']);//se crea un nuevo comentario con el id del post actual y el id del user
                 $item->setId($p['id']);//se establece como id del objeto comentario
+                $item->setUsernameComment($p['username']);
                 array_push($arrayComments, $item);//se agrega cada objeto comentario al array
             }
            $this->comments=$arrayComments;
