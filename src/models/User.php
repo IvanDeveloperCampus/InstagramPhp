@@ -14,11 +14,15 @@ class User extends Model{
     private int $id;
     private array $posts;
     private string $profile;
+    private array $followed;
+    private array $followers;
 
     public function __construct(private string $username, private string $password){
         parent::__construct();
         $this->posts=[];
         $this->profile="";
+        $this->followers=[];
+        $this->followed=[];
     }
 
     public function setProfile($profile){
@@ -27,6 +31,22 @@ class User extends Model{
 
     public function getprofile(){
         return $this->profile;
+    }
+
+    public function countGetFollowers(){
+        return count($this->followers);
+    }
+
+    public function countGetFollowed(){
+        return count($this->followed);
+    }
+
+    public function getFollowers(){
+        return $this->followers;
+    }
+
+    public function getFollowed(){
+        return $this->followed;
     }
 
     public function publish(PostImage $post){
@@ -135,6 +155,23 @@ class User extends Model{
 
     public function fetchPosts(){
         $this->posts=POstImage::getAll($this->id);
+    }
+
+    //traer y asignar al array los seguidores
+    public function fetchFollowed(){
+        $this->followed=Follower::getFollowed($this->id);
+    }
+
+    //traer y asignar al array los seguidos
+    public function fetchFollowers(){
+        $this->followers=Follower::getFollowers($this->id);
+    }
+
+    //RECIBIMOS EL USUARIO QUE VAN A SEGUIR
+    public function addSeguidor(User $user){
+        //EXTRAMOS PRIMERAMENTE EL USUARIO QUE REALIZA LA ACCION, Y DESPUES EXTRAEMOS EL ID DEL QUE VAN A SEGUIR
+        $follower=new Follower($this->id, $user->getId());
+        $follower->existFollow();
     }
 
     public function getId():string{

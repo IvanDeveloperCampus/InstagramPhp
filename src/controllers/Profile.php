@@ -15,6 +15,8 @@ class Profile extends Controller{
 
     public function getUserProfile(User $user){
         $user->fetchPosts();
+        $user->fetchFollowed();
+        $user->fetchFollowers();
         $this->render('profile/index', ['user'=>$user]);
     }
 

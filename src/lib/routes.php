@@ -95,6 +95,14 @@ $router->post('/addComment', function(){
     $controller=new Actions($user);
     $controller->comment();
 });
+
+$router->post('/follow', function(){
+    notAuth();
+    $user=unserialize($_SESSION['user']);
+    $controller=new Actions($user);
+    $controller->follow();
+});
+
 $router->get('/signout', function(){
     notAuth();
     unset($_SESSION['user']);
