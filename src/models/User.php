@@ -137,8 +137,9 @@ class User extends Model{
         }
     }
 
+    
      //traer usuario por username
-     public static function get ($username){
+     public static function getByUsername ($username){
         try{
             $db=new Database();
             $query=$db->connect()->prepare('SELECT * FROM users WHERE username=:username');
@@ -150,15 +151,18 @@ class User extends Model{
             $user->setId($data['user_id']);
             $user->setProfile($data['profile']);
             return $user;
-
         }catch(PDOException $e){
-            error_log($e->getMessage());
-            return NULL;
+            error_log("ERORORORORO=>" . $e->getMessage());
         }
     }
 
     public function fetchPosts(){
         $this->posts=POstImage::getAll($this->id);
+    }
+
+    //LE ASIGNO A MI ARRAY POST EL ARRAY RETORNADO CON TODOS LOS POST DE LOS USUARIOS A LOS QUE SIGUE ESE USER
+    public function fetchPostsFollowers(){
+        $this->posts=POstImage::getPostFollowers($this->id);
     }
 
     //traer y asignar al array los seguidores

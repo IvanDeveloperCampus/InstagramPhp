@@ -17,7 +17,9 @@
 
     <?php
     $user = $this->data['user'];
-    $posts = $this->data['posts']; ?>
+    //$posts = $this->data['posts'];
+
+     ?>
 
     <?php require_once("src/views/Layouts/navbar.php") ?>
 
@@ -42,7 +44,7 @@
 
     <section class="container main">
         <?php
-        foreach ($posts as $p) {
+        foreach ($user->getPosts() as $p) {
 
         ?>
 

@@ -15,8 +15,9 @@ class Home extends Controller{
     }
 
     public function index(){
-        $posts=PostImage::getFeed();
-        $this->render('home/index', ['user'=> $this->user, 'posts'=>$posts]);
+        //LLAMO CON MI USUARIO LOGEADO PARA QUE SE EJECUTE LA FUNCION QUE SE TRAE LOS POSTS CORRESPONDIENTES
+        $this->user->fetchPostsFollowers();
+        $this->render('home/index', ['user'=> $this->user]);
 
     }
 
