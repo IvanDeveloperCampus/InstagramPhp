@@ -18,7 +18,7 @@ class Login extends Controller{
         
         if (!empty($username)&& !empty($password)) {
             if (User::exits($username)) {
-                $user=User::get($username);
+                $user=User::getByUsername($username);
                 if ($user->comparePasswords($password)) {  //
                     $_SESSION['user']=serialize($user);
                     echo "user logged in";

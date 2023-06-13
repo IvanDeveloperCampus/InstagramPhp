@@ -21,9 +21,10 @@ class Profile extends Controller{
     }
 
     public function getUsernameProfile(string $username){
-        $user=User::get($username);
+        $user=User::getByUsername($username);
         $this->getUserProfile($user);
     }
+
 }
 
 ?>
