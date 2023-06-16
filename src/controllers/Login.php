@@ -22,7 +22,7 @@ class Login extends Controller{
                 if ($user->comparePasswords($password)) {  //
                     $_SESSION['user']=serialize($user);
                     echo "user logged in";
-                    header('location: /InstagramPhp/home');
+                    header('location: /SkylAb-170/InstagramPhp/home');
                 }else{
                     echo "Password Inconrrecto";
                     
@@ -35,7 +35,7 @@ class Login extends Controller{
              * utilizar ese objeto en sesiones futuras. */
         
         }else{
-            header('location: /InstagramPhp/login');
+            header('location: /SkylAb-170/InstagramPhp/login');
         }
 
     }

@@ -19,7 +19,7 @@ class Actions extends Controller{
         if (!is_null($post_id) && !is_null($origin)) {
             $post=POstImage::get($post_id);//se trae el post segun el id especifico
             $post->addLike($this->user);
-            header('location: /instagramPhp/' . $origin);
+            header('location: /SkylAb-170/instagramPhp/' . $origin);
             
         }
     }

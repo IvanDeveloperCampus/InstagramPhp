@@ -37,7 +37,7 @@ class Signup extends Controller{
             $user=new User($username, $password);
             $user->setProfile($pictureName);
             $user->save();
-            header('location: /InstagramPhp/login');
+            header('location: /SkylAb-170/InstagramPhp/login');
 
         }else{
             $this->render('errors/index');

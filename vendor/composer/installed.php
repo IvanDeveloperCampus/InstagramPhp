@@ -3,7 +3,7 @@
         'name' => 'skylab-170/instagram-php',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'aa6aa7bff70a1345f9540a6faa98751eab9b73bd',
+        'reference' => '1a30b8ea4aabf1a044728b19432a86a02cc52dd8',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -40,7 +40,7 @@
         'skylab-170/instagram-php' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'aa6aa7bff70a1345f9540a6faa98751eab9b73bd',
+            'reference' => '1a30b8ea4aabf1a044728b19432a86a02cc52dd8',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

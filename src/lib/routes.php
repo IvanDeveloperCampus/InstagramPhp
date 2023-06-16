@@ -15,14 +15,14 @@ session_start();//inicia sesion
 
 function notAuth(){
     if (!isset($_SESSION['user'])) {
-        header('location: /instagramPhp/login');
+        header('location: /SkylAb-170/instagramPhp/login');
         exit();
     }
 }
 
 function auth(){
     if (isset($_SESSION['user'])) {
-        header('location: /instagramPhp/home');
+        header('location: /SkylAb-170/instagramPhp/home');
         exit();
     }
 }
@@ -106,7 +106,7 @@ $router->post('/follow', function(){
 $router->get('/signout', function(){
     notAuth();
     unset($_SESSION['user']);
-    header('location: /InstagramPhp/login');
+    header('location: /SkylAb-170/InstagramPhp/login');
 });
 $router->get('/{username}', function($username){
     notAuth();

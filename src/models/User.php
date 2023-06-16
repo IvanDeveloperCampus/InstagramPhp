@@ -5,6 +5,7 @@ namespace Skylab170\InstagramPhp\models;
 
 use Skylab170\InstagramPhp\lib\Model;
 use Skylab170\InstagramPhp\lib\Database;
+require_once("src/models/PostImage.php");
 use PDO;
 use PDOException;
 
