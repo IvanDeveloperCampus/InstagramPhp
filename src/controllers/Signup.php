@@ -36,8 +36,9 @@ class Signup extends Controller{
             $pictureName=UtilImages::storeImage($profile);
             $user=new User($username, $password);
             $user->setProfile($pictureName);
-            $user->save();
-            header('location: /InstagramPhp/login');
+            $rta=$user->save();
+            $this->render('signup/index', ['data'=>$rta]);
+
 
         }else{
             $this->render('errors/index');

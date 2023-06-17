@@ -70,15 +70,19 @@ class User extends Model{
     public function save(){
         
         try {
-            //TODO: validar si exite usurio
-            $hash=$this->getHashedPassword($this->password);
-            $query=$this->prepare('INSERT INTO users (username, password, profile) VALUES (:username, :password, :profile)');
-            $query->execute([
-                'username'=>$this->username,
-                'password'=>$hash,
-                'profile'=>$this->profile
-            ]);
-            echo "Se guardo User";
+            if ($this->exits($this->username)) {
+                echo "ingrese otro nombre de user";
+            }else{
+                $hash=$this->getHashedPassword($this->password);
+                $query=$this->prepare('INSERT INTO users (username, password, profile) VALUES (:username, :password, :profile)');
+                $query->execute([
+                    'username'=>$this->username,
+                    'password'=>$hash,
+                    'profile'=>$this->profile
+                ]);
+                echo "Se guardo User";
+            }
+            
         } catch (PDOException $e) {
             //error_log($e->getMessage());
             echo "Error al guadrar" . $e->getMessage();
