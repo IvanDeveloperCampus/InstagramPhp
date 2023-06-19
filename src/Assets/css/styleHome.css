@@ -176,7 +176,7 @@ body {
 /* Media queries */
 @media screen and (max-width: 768px) {
     .main {
-        width: 90%; /* Modificado */
+        width: 90%; 
     }
 
     .post {
@@ -184,39 +184,39 @@ body {
     }
 
     .post-image {
-        max-height: 300px; /* Modificado */
+        max-height: 300px; 
     }
 
     .comment-wrapper {
-        padding: 0; /* Modificado */
+        padding: 0; 
     }
 
     .comment-box {
-        width: 70%; /* Modificado */
+        width: 70%; 
     }
 }
 
 @media screen and (max-width: 576px) {
     .info .username {
-        font-size: 12px; /* Modificado */
+        font-size: 12px; 
     }
 
     .post-content {
-        padding: 10px; /* Modificado */
+        padding: 10px; 
     }
 
     .reaction-wrapper .icon {
-        height: 20px; /* Modificado */
-        margin-right: 10px; /* Modificado */
+        height: 20px; 
+        margin-right: 10px; 
     }
 
     .description {
-        font-size: 12px; /* Modificado */
-        line-height: 16px; /* Modificado */
+        font-size: 12px; 
+        line-height: 16px; 
     }
 
     .post-time {
-        font-size: 10px; /* Modificado */
+        font-size: 10px; 
     }
 }
 

@@ -43,7 +43,7 @@
 .ins-img{
     height: 100%;
     margin-top: 7px;
-    margin-left: 425px;
+    margin-left: 230px;
 }
 
 .search-box{
@@ -76,6 +76,13 @@
     cursor: pointer;
     margin: -7px 10px;
     display: inline-block;
+}
+
+@media screen and (max-width: 576px) {
+
+    .nav-items{
+    display: none;
+}
 }
 
 /* Navbar End */

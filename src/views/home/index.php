@@ -97,6 +97,9 @@
         <?php } ?>
     </section>
 
+    <?php require_once("src/views/Layouts/footer.php") ?>
+
+
 
 
     <script src="src/Assets/js/Eventos.js"></script>
