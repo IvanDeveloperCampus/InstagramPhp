@@ -20,6 +20,7 @@ body{
 }
 
 header{
+    display: flex;
     width: 60%;
     margin: auto;
     transform: translateY(50px);
@@ -27,27 +28,40 @@ header{
 }
 .perfil-container{
     display: flex;
+    justify-content: center;
+    margin-left: -7rem;
 }
 .perfil-container img{
     height: 150px;
     width: 150px;
     border-radius: 50%;
-    cursor: pointer;
+    margin-right: 5rem;
 }
-.contenedor-cabezera{
-    margin-left: 100px;
-}
-.cabezera1{
-    width: 400px;
+
+.cabezera1 {
     display: flex;
     align-items: center;
     margin-bottom: 15px;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
-.cabezera1 h1{
+
+.cabezera1 h1 {
     color: #616161;
     font-weight: 100;
     font-size: 26px;
+    flex: 1 1 auto;
+    margin-right: 10px;
+}
+
+.name-form-container {
+    display: flex;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    align-items: center;
 }
 .cabezera1 .sendMessage{
     width: 150px;
@@ -57,6 +71,7 @@ header{
 }
 .cabezera1 svg{
     cursor: pointer;
+    margin-left: 1rem;
 }
 .cabezera2{
     display: flex;
@@ -65,13 +80,14 @@ header{
     margin-bottom: 15px;
 }
 .cabezera2 .seguidores, .cabezera2 .seguidos{
-    margin-left: 1rem;
+    margin-left: 2rem;
 }
 
 .linea{
-    width: 100%;
+    margin-top: 10rem;
+    margin-left: 9rem;
+    width: 77%;
     height: 1px;
-    margin: auto;
     background-color: #dbdbdb;
 }
 .main-nav{
@@ -93,6 +109,7 @@ main{
     margin-top: 60px;
 }
 .mainCont__grid{
+    width: 77%;
     display: grid;
     grid-template-columns: repeat(3,32%);
     grid-template-rows: repeat(5,auto);
@@ -105,6 +122,5 @@ main{
 }
 
 
-.cabezera2{
-    display: flex;
-}
+
+
