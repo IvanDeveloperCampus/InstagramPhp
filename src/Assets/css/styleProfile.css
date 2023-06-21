@@ -1,126 +1,166 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
 
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-*:focus{
-    outline: none;
+*:focus {
+  outline: none;
 }
 
-body{
-    width: 100%;
-    background: #fafafa;
-    position: relative;
-    font-family: 'roboto', sans-serif;
+body {
+  width: 100%;
+  background: #fafafa;
+  position: relative;
+  font-family: "roboto", sans-serif;
 }
 
-header{
-    display: flex;
-    width: 60%;
-    margin: auto;
-    transform: translateY(50px);
-    padding: 20px 0;
+.perfil-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(40px);
+  margin-left: 10rem;
 }
-.perfil-container{
-    display: flex;
-    justify-content: center;
-    margin-left: -7rem;
-}
-.perfil-container img{
-    height: 150px;
-    width: 150px;
-    border-radius: 50%;
-    margin-right: 5rem;
+.perfil-container img {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+
 }
 
 .cabezera1 {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-    justify-content: space-between;
-    flex-wrap: wrap;
+  display: flex;
+  margin-bottom: 15px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-left: 3rem;
 }
 
 .cabezera1 h1 {
-    color: #616161;
-    font-weight: 100;
-    font-size: 26px;
-    flex: 1 1 auto;
-    margin-right: 10px;
+  color: #616161;
+  font-weight: 100;
+  font-size: 26px;
+  flex: 1 1 auto;
+  margin-right: 10px;
 }
 
 .name-form-container {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 form {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
-.cabezera1 .sendMessage{
-    width: 150px;
-    height: 30px;
-    border: solid #dbdbdb 1px;
-    cursor: pointer;
+.cabezera1 .sendMessage {
+  width: 150px;
+  height: 30px;
+  border: solid #dbdbdb 1px;
+  cursor: pointer;
 }
-.cabezera1 svg{
-    cursor: pointer;
-    margin-left: 1rem;
+.cabezera1 svg {
+  cursor: pointer;
+  margin-left: 1rem;
 }
-.cabezera2{
-    display: flex;
-    justify-content: space-between;
-    font-size: 15px;
-    margin-bottom: 15px;
+.cabezera2 {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  margin-bottom: 15px;
+  margin-left: 3rem;
 }
-.cabezera2 .seguidores, .cabezera2 .seguidos{
-    margin-left: 2rem;
-}
-
-.linea{
-    margin-top: 10rem;
-    margin-left: 9rem;
-    width: 77%;
-    height: 1px;
-    background-color: #dbdbdb;
-}
-.main-nav{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 50%;
-    margin: auto;
-    padding: 15px;
-}
-.main-nav a{
-    color: #333;
-    text-decoration: none;
-    font-size: 13px;
-}
-main{
-    width: 70%;
-    margin: auto;
-    margin-top: 60px;
-}
-.mainCont__grid{
-    width: 77%;
-    display: grid;
-    grid-template-columns: repeat(3,32%);
-    grid-template-rows: repeat(5,auto);
-    gap: 2%;
-    height: auto;
-}
-.mainCont__grid div > img{
-    width: 100%;
-    cursor: pointer;
+.cabezera2 .seguidores,
+.cabezera2 .seguidos {
+  margin-left: 2rem;
 }
 
+section .publicaciones {
+  width: 50%;
+}
 
+.linea {
+  margin-top: 10rem;
+  width: 100%;
+  height: 1px;
+  background-color: #dbdbdb;
+}
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  padding: 15px;
+  margin-left: 13rem;
+}
+.main-nav a {
+  color: #333;
+  text-decoration: none;
+  font-size: 13px;
+}
 
+.mainCont__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 32%);
+  grid-template-rows: repeat(5, auto);
+  gap: 2%;
+  height: auto;
+}
+.mainCont__grid div > img {
+  width: 100%;
+  cursor: pointer;
+}
 
+@media screen and (max-width: 576px) {
+
+    .cabezera2 {
+        display: none;
+      }
+
+    .perfil-container {
+        margin-left: -1rem;
+      }
+
+      .perfil-container img {
+        height: 80px;
+        width: 80px;
+        margin-top: -2rem;
+      }
+
+      .cabezera1 {
+        align-items: flex-start;
+        margin-top: -2rem;
+        margin-left: 1rem;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .cabezera1 svg {
+        display: none;
+      }
+
+      .cabezera1 h1 {
+        color: #000000;
+        font-weight: 100;
+        font-size: 18px;
+        flex: 1 1 auto;
+        margin-right: 10px;
+      }
+
+      section .publicaciones {
+        width: 124%;
+        margin-left: -2rem;
+      }
+
+      .main-nav {
+        margin-left: 1rem;
+      }
+
+ 
+}
