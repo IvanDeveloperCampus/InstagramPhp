@@ -1,7 +1,9 @@
 <nav class="navbar">
     <div class="nav-wrapper">
         <img src="src/assets/img/logo.PNG" class="ins-img" alt="">
-        <input type="text" class="search-box" placeholder="search">
+        <form  action="search" method="POST">
+            <input type="text" name="username" class="search-box" placeholder="search">
+        </form>
         <div class="nav-items">
             <img src="src/assets/img/home.PNG" class="icon" alt="">
             <img src="src/assets/img/messenger.PNG" class="icon" alt="">
@@ -58,7 +60,7 @@
         color: rgba(0, 0, 0, 0.5);
         text-align: center;
         text-transform: capitalize;
-        margin-top: 7px;
+        margin-top: -5px;
     }
 
     .search-box::placeholder {
