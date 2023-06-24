@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <title>Document</title>
     <link rel="stylesheet" href="src/Assets/css/styleProfile.css">
 </head>
@@ -18,7 +19,27 @@
     $loggedInUser = unserialize($_SESSION['user']);
 
     require_once("src/views/Layouts/navbar.php");
+
     ?>
+
+<div class="modal fade" id="post-add-modal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h2>Create Post</h2>
+                    <hr>
+                    <div class="msg"></div>
+                    <form action="publish" method="POST" enctype="multipart/form-data">
+                        <textarea name="title" rows="3" placeholder="escribe un pie de foto o video"></textarea>
+                        <div>
+                            <input type="file" name="image">
+                            <button type="submit" class="subirPost">Post</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <header class="mt-5 mb-5">
         <div class="container perfil-container">
