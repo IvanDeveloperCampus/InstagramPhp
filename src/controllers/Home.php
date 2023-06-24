@@ -31,9 +31,9 @@ class Home extends Controller{
             $fileName=UtilImages::storeImage($image);
             $post=new PostImage($title, $fileName);//creamos un nuevo post de tipo Imagen
             $this->user->publish($post);//y con el usuario actual llamamos a publicar con la informacion del post
-            header('location: /instagramPhp/home');
+            header('location: /instagramPhp/');
         }else{
-            header('location: /instagramPhp/home');
+            header('location: /instagramPhp/');
         }
     }
 }

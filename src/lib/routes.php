@@ -22,29 +22,16 @@ function notAuth(){
 
 function auth(){
     if (isset($_SESSION['user'])) {
-        header('location: /instagramPhp/home');
+        header('location: /instagramPhp/');
         exit();
     }
 }
 
 $router->get('/', function(){
-    $database = new Database();
-    
-    try {
-        $pdo = $database->connect();
-        $stmt = $pdo->query("SELECT DATABASE()");
-        $databaseName = $stmt->fetchColumn();
-        var_dump($databaseName);
-        if ($databaseName === false) {
-            echo "No se pudo obtener el nombre de la base de datos.";
-        } else {
-            echo "Conexión exitosa a la base de datos: " . $databaseName;
-        }
-        //echo "Conexión exitosa a la base de datos: " . $databaseName;
-    } catch (PDOException $e) {
-        echo "Error en la conexión: " . $e->getMessage();
-        var_dump($e);
-    }
+    notAuth();
+    $user=unserialize($_SESSION['user']);
+    $controller=new Home($user);
+    $controller->index();
 });
 
 $router->get('/login', function(){
@@ -69,12 +56,7 @@ $router->post('/register', function(){
    $controller=new Signup;
     $controller->register();
 });
-$router->get('/home', function(){
-    notAuth();
-    $user=unserialize($_SESSION['user']);
-    $controller=new Home($user);
-    $controller->index();
-});
+
 $router->post('/publish', function(){
     notAuth();
     $user=unserialize($_SESSION['user']);
@@ -113,6 +95,13 @@ $router->get('/{username}', function($username){
     $controller=new Profile();
     $controller->getUsernameProfile($username);
 });
+$router->post('/search', function(){
+    notAuth();
+    $controller=new Profile();
+    $controller->getUsernameProfile($_POST['username']);
+});
+
+
 
 
 
