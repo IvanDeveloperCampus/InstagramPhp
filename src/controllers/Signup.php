@@ -25,13 +25,15 @@ class Signup extends Controller{
             !is_null($password) && !is_null($profile)
         ){
            
-            $pictureName=UtilImages::storeImage($profile);
+            
             $user=new User($username, $password);
-            $user->setProfile($pictureName);
-            $rta=$user->save();
-            if (!$rta) {
+            $rta=$user->exits($username);
+            if ($rta) {
                 $this->render('signup/index', ['data'=>"Ingrese otro nombre de usuario por favor"]);
             }else{
+                $pictureName=UtilImages::storeImage($profile);             
+                $user->setProfile($pictureName);
+                $user->save();
                 $this->render('login/index', ['data'=>"Usuario creado correctamente, por favor inicie sesion"]);
             }
            

@@ -70,9 +70,7 @@ class User extends Model{
     public function save(){
         
         try {
-            if ($this->exits($this->username)) {
-                return false;
-            }else{
+          
                 $hash=$this->getHashedPassword($this->password);
                 $query=$this->prepare('INSERT INTO users (username, password, profile) VALUES (:username, :password, :profile)');
                 $query->execute([
@@ -81,7 +79,7 @@ class User extends Model{
                     'profile'=>$this->profile
                 ]);
                 return true;
-            }
+            
             
         } catch (PDOException $e) {
             //error_log($e->getMessage());
