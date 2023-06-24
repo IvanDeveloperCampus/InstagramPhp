@@ -44,57 +44,65 @@
 
     <section class="container main">
         <?php
-        foreach ($user->getPosts() as $p) {
-
-        ?>
-
-            <div class="post">
-                <div class="info">
-                    <div class="user">
-                        <div class="profile-pic">
-                            <img src="public/img/photos/<?php echo $p->getUser()->getProfile() ?>" alt="imgPerfil" width="50%">
+        $posts=$user->getPosts();
+        $userr=$user->getUsername();
+        if (empty($posts)) {
+            echo "<p>Bienvenido  $userr. No tiene seguidores debes seguir a alguien primero</p>";
+        }else{
+            foreach ($posts as $p) {         
+                ?>
+        
+                    <div class="post">
+                        <div class="info">
+                            <div class="user">
+                                <div class="profile-pic">
+                                    <img src="public/img/photos/<?php echo $p->getUser()->getProfile() ?>" alt="imgPerfil" width="50%">
+                                </div>
+                                <a class="username" href="/instagramPhp/<?php echo $p->getUser()->getUsername() ?>">
+                                    <?php echo $p->getUser()->getUsername() ?>
+                                </a>
+                            </div>
                         </div>
-                        <a class="username" href="/instagramPhp/<?php echo $p->getUser()->getUsername() ?>">
-                            <?php echo $p->getUser()->getUsername() ?>
-                        </a>
+                        <img src="public/img/photos/<?php echo $p->getImage() ?>" class="post-image" alt="">
+                        <div class="post-content">
+                            <div class="reaction-wrapper">
+                                <form action="addLike" method="POST">
+                                    <input type="hidden" name="post_id" value="<?php echo $p->getId() ?>">
+                                    <input type="hidden" name="origin" value="home">
+                                    <button type="submit" class="icon-button"><img src="src/assets/img/like.PNG" id="icon-Like" class="icon" alt=""></button>
+                                    <img src="src/assets/img/comment.PNG" class="icon" alt="">
+                                    <img src="src/assets/img/send.PNG" class="icon" alt="">
+                                    <img src="src/assets/img/save.PNG" class="save icon" alt="">
+                                </form>
+                            </div>
+                            <p class="likes"><?php echo $p->getLikes(); ?></p>
+                            <p class="description"><span><?php echo $p->getUser()->getUsername() ?></span><?php echo $p->getTitle() ?></p>
+        
+                            <?php foreach ($p->getComments() as $c) { ?>
+                                <a class="referencia" href="/instagramPhp/<?php echo $c->usernameComment ?>">
+                                    <p class="comentario"><span><?php echo $c->usernameComment ?></span><?php echo $c->comment ?></p>
+                                <?php } ?>
+                                </a>
+                                <p class="post-time">
+                                    <?php echo $p->getCreatedAt()  ?>
+                                </p>
+                        </div>
+        
+                        <div class="comment-wrapper">
+                            <form action="addComment" method="POST">
+                                <img src="src/assets/img/smile.PNG" class="icon" alt="">
+                                <input type="hidden" name="post_id" value="<?php echo $p->getId() ?>">
+                                <input type="hidden" name="origin" value="home">
+                                <input type="text" class="comment-box" name="comment" placeholder="Add a comment">
+                                <button type="submit" class="comment-btn">Post</button>
+                            </form>
+                        </div>
                     </div>
-                </div>
-                <img src="public/img/photos/<?php echo $p->getImage() ?>" class="post-image" alt="">
-                <div class="post-content">
-                    <div class="reaction-wrapper">
-                        <form action="addLike" method="POST">
-                            <input type="hidden" name="post_id" value="<?php echo $p->getId() ?>">
-                            <input type="hidden" name="origin" value="home">
-                            <button type="submit" class="icon-button"><img src="src/assets/img/like.PNG" id="icon-Like" class="icon" alt=""></button>
-                            <img src="src/assets/img/comment.PNG" class="icon" alt="">
-                            <img src="src/assets/img/send.PNG" class="icon" alt="">
-                            <img src="src/assets/img/save.PNG" class="save icon" alt="">
-                        </form>
-                    </div>
-                    <p class="likes"><?php echo $p->getLikes(); ?></p>
-                    <p class="description"><span><?php echo $p->getUser()->getUsername() ?></span><?php echo $p->getTitle() ?></p>
-
-                    <?php foreach ($p->getComments() as $c) { ?>
-                        <a class="referencia" href="/instagramPhp/<?php echo $c->usernameComment ?>">
-                            <p class="comentario"><span><?php echo $c->usernameComment ?></span><?php echo $c->comment ?></p>
-                        <?php } ?>
-                        </a>
-                        <p class="post-time">03/06/2023</p>
-                </div>
-
-                <div class="comment-wrapper">
-                    <form action="addComment" method="POST">
-                        <img src="src/assets/img/smile.PNG" class="icon" alt="">
-                        <input type="hidden" name="post_id" value="<?php echo $p->getId() ?>">
-                        <input type="hidden" name="origin" value="home">
-                        <input type="text" class="comment-box" name="comment" placeholder="Add a comment">
-                        <button type="submit" class="comment-btn">Post</button>
-                    </form>
-                </div>
-            </div>
-
-
-        <?php } ?>
+        
+        
+                <?php }
+        } ?>
+        
     </section>
 
     <?php require_once("src/views/Layouts/footer.php") ?>

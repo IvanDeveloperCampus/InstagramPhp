@@ -9,12 +9,22 @@ use PDOException;
 
 class POstImage extends Post{
 
+    private $createdAt;
+
     public function __construct(private string $title, private string $image){
         parent::__construct($title);
     }
 
     public function getImage(){
         return $this->image;
+    }
+
+    public function setCreatedAt($createdAt){
+        $this->createdAt=$createdAt;
+    }
+
+    public function getCreatedAt(){
+        return $this->createdAt;
     }
 
 
@@ -73,6 +83,7 @@ class POstImage extends Post{
                 $item->setId($p['post_id']);//se le asigna el id del post
                 $item->fetchLikes();//para traer los likes de cada post
                 $item->fetchComments();//traer comentarios
+                $item->setCreatedAt($p['createdAt']);
                 $user=User::getById($p['user_id']);//se trae el usuario del post
                 $item->setUser($user);//se el asigna al post
                 array_push($items, $item);
@@ -99,6 +110,7 @@ class POstImage extends Post{
                 $item->setId($p['post_id']);//se le asigna el id del post
                 $item->fetchLikes();//para traer los likes de cada post
                 $item->fetchComments();//traer comentarios
+                $item->setCreatedAt($p['createdAt']);//traer las fechas
                 $user=User::getById($p['user_id']);//se trae el usuario del post
                 $item->setUser($user);//se el asigna al post
                 array_push($items, $item);
