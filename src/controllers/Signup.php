@@ -14,15 +14,7 @@ class Signup extends Controller{
     }
 
     public function register(){
-     /* //PARA PROBAR DESDE THUNDER
-    $data=json_decode(file_get_contents("php://input"), true);
-
-        $username = $data['username'] ?? null;
-        $password = $data['password'] ?? null;
-        $profile =$data['profile'] ?? null;
-*/
-
-
+ 
         $username = $this->post('username');
         $password = $this->post('password');
         $profile = $this->file('profile');
@@ -37,7 +29,12 @@ class Signup extends Controller{
             $user=new User($username, $password);
             $user->setProfile($pictureName);
             $rta=$user->save();
-            $this->render('signup/index', ['data'=>$rta]);
+            if (!$rta) {
+                $this->render('signup/index', ['data'=>"Ingrese otro nombre de usuario por favor"]);
+            }else{
+                $this->render('login/index', ['data'=>"Usuario creado correctamente, por favor inicie sesion"]);
+            }
+           
 
 
         }else{

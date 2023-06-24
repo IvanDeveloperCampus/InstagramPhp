@@ -96,3 +96,15 @@
     color: rgb(0, 66, 128);
     font-weight: 400;
   }
+
+  .error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+
+  .success-message{
+    color: rgb(15, 163, 15);
+    font-size: 15px;
+    margin-bottom: 10px;
+  }

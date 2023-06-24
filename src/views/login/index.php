@@ -12,6 +12,11 @@
 <body>
 
     <div class="container">
+    <?php
+                    if (isset($this->data['data'])) {
+                    ?><span class="success-message"><?php echo $this->data['data'] ?></span><?php
+                                                                }
+                                                                    ?>
         <div class="center">
             <div class="header">
                 <img src="src/assets/img/logo.PNG" alt="instagramLogo" class="instaLogo" />

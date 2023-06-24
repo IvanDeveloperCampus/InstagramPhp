@@ -23,15 +23,15 @@
                 <div class="inputElement">
 
                     <input type="text" placeholder="Username" name="username" class="inputText" />
-
-                    <input type="password" placeholder="Password" name="password" class="inputText" />
-                    <br>
-                    <input type="file" name="profile">
                     <?php
                     if (isset($this->data['data'])) {
                     ?><span class="error-message"><?php echo $this->data['data'] ?></span><?php
                                                                 }
                                                                     ?>
+                    <input type="password" placeholder="Password" name="password" class="inputText" />
+                    <br>
+                    <input type="file" name="profile">
+                   
                     <input type="submit" value="Sign Up" class="inputButton" />
 
                     <div class="line">

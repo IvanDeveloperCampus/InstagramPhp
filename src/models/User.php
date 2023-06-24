@@ -71,7 +71,7 @@ class User extends Model{
         
         try {
             if ($this->exits($this->username)) {
-                echo "ingrese otro nombre de user";
+                return false;
             }else{
                 $hash=$this->getHashedPassword($this->password);
                 $query=$this->prepare('INSERT INTO users (username, password, profile) VALUES (:username, :password, :profile)');
@@ -80,12 +80,13 @@ class User extends Model{
                     'password'=>$hash,
                     'profile'=>$this->profile
                 ]);
-                echo "Se guardo User";
+                return true;
             }
             
         } catch (PDOException $e) {
             //error_log($e->getMessage());
             echo "Error al guadrar" . $e->getMessage();
+            return false;
         }
     }
 
